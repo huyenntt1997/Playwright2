@@ -1,0 +1,12 @@
+{
+    "validUser": {
+      "firstname": "huyen",
+      "lasttname": "huyen",
+      "email": "huyenntt1@gmail.com",
+      "password": "Password123"
+    },
+    "invalidUser": {
+      "email": "wronguser",
+      "password": "wrongpass"
+    }
+  }
