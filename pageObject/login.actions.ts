@@ -9,7 +9,7 @@ export class LoginActions {
     }
 
     async navigateLogin() {
-        const url = getBaseUrl() + 'customer/account/login/';
+        const url = getBaseUrl();
         await this.page.goto(url);
       }
 

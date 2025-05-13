@@ -1,6 +1,6 @@
 export class LoginPageUI {
-    static usernameInput = 'input[type="email"]';
-    static passwordInput = 'input[type="password"]';
-    static loginButton = 'button[type="submit"]';
-    static registerErrorText = 'text= Invalid login or password.';
+    static usernameInput = 'input[id="user-name"]';
+    static passwordInput = 'input[id="password"]';
+    static loginButton = 'input[id="login-button"]';
+    static registerErrorText = 'text= Epic sadface: Username and password do not match any user in this service';
   }

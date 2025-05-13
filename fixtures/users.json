@@ -2,11 +2,11 @@
     "validUser": {
       "firstname": "huyen",
       "lasttname": "huyen",
-      "email": "huyenntt1@gmail.com",
-      "password": "Password123"
+      "username": "standard_user",
+      "password": "secret_sauce"
     },
     "invalidUser": {
-      "email": "wronguser",
-      "password": "wrongpass"
+      "username": "wronguser@gmail.com",
+      "password": "wrongpass124"
     }
   }

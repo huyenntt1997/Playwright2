@@ -1,5 +1,5 @@
 export const baseUrls = {
-    dev: 'https://live.techpanda.org/index.php/'
+    dev: 'https://www.saucedemo.com/'
   };
   export const getBaseUrl = () => {
     const env = process.env.ENV || 'dev'; // ENV=staging chẳng hạn

@@ -6,7 +6,7 @@ export class LoginPostActions {
         this.page = page;
     }
     async navigateLoginPost() {
-        const url = getBaseUrl() + '/customer/account/loginPost/';
+        const url = getBaseUrl() + '/customer/account/createpost/';
         await this.page.goto(url);
       }
     async sendAnyway() {
