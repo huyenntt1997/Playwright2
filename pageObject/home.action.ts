@@ -1,17 +1,21 @@
 import { expect, Page } from '@playwright/test';
 import { getBaseUrl } from '../config/baseUrls';
 import { HomePageUI } from '../interfaces/HomePageUI';
+import { LoginPageUI } from '../interfaces/LoginPageUI';
 
 export class HomeActions {
   constructor(private page: Page) {
     this.page = page;
   }
 
-  async navigateHomepage() {
-    const url = getBaseUrl() + "inventory.html";
-    await this.page.goto(url);
+  getHomepageUrl() {
+    return getBaseUrl() + "inventory.html";
   }
 
+  async navigateHomepage() {
+    const url = this.getHomepageUrl();
+    await this.page.goto(url);
+  }
 
   async clickHamburgerButton() {
     await this.page.click(HomePageUI.hamburgerButton);
@@ -46,11 +50,26 @@ export class HomeActions {
     await this.clickHamburgerButton();
     await this.clickLogoutButton();
   }
+  async assertLoginButton() {
+    await expect(this.page.locator(LoginPageUI.loginButton)).toBeVisible();
+  }
 
   async assertListHumberger() {
+    await this.clickHamburgerButton();
     await expect(this.page.locator(HomePageUI.allItemButton)).toHaveText('All Items');
     await expect(this.page.locator(HomePageUI.aboutButton)).toHaveText('About');
     await expect(this.page.locator(HomePageUI.logoutButton)).toHaveText('Logout');
     await expect(this.page.locator(HomePageUI.resetAppStateButton)).toHaveText('Reset App State');
   }
+  async assertShopbutton() {
+    await expect(this.page.locator(HomePageUI.shopButton)).toBeVisible();
+  }
+  async clickShopbutton() {
+    await this.page.click(HomePageUI.shopButton);
+  }
+  async assertProductListCount(expectedCount: number) {
+  const productItems = this.page.locator(HomePageUI.productItems);
+  await expect(productItems).toHaveCount(expectedCount);
+}
+
 }

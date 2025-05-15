@@ -13,6 +13,8 @@ export class HomePageUI {
     static aboutButton = 'a[id="about_sidebar_link"]';
     static logoutButton = 'a[id="logout_sidebar_link"]';
     static resetAppStateButton = 'a[id="reset_sidebar_link"]';
+    static shopButton = 'a[class="shopping_cart_link"]';
+    static productItems = '[data-test="inventory-item-name"]';
 
 
 }
