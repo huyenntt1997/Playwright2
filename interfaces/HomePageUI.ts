@@ -15,6 +15,7 @@ export class HomePageUI {
     static resetAppStateButton = 'a[id="reset_sidebar_link"]';
     static shopButton = 'a[class="shopping_cart_link"]';
     static productItems = '[data-test="inventory-item-name"]';
-
-
+    static addToCartButton = 'button[id="add-to-cart-sauce-labs-backpack"]';
+    static removeButton = 'button[id="remove-sauce-labs-backpack"]';
+    static badgeIcon = 'span[class="shopping_cart_badge"]';
 }

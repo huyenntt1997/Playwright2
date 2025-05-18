@@ -2,14 +2,12 @@ import { test, expect } from '@playwright/test';
 import { LoginActions } from '../pageObject/login.actions';
 import users from '../fixtures/users.json';
 import { HomeActions } from '../pageObject/home.action';
-import { getUrlAbout } from '../config/baseUrls';
+import { login } from '../utils/Loginhelpers';
 
-test.beforeEach(async ({ page }) => {
-  const loginPage = new LoginActions(page);
-  const { username, password } = users.validUser;
-  await loginPage.loginAction(username, password);
-});
 test('Vefify HomePage', async ({ page }) => {
+  const { username, password } = users.validUser;
+  await login(page, username, password);
+
   const home = new HomeActions(page);
 
   await test.step('Check title', async () => {
@@ -39,10 +37,8 @@ test('Vefify HomePage', async ({ page }) => {
   });
 
   await test.step('Check button "Shop"', async () => {
-
-    const loginPage = new LoginActions(page);
     const { username, password } = users.validUser;
-    await loginPage.loginAction(username, password);
+    await login(page, username, password);
     await home.assertShopbutton();
     await home.clickShopbutton();
     await page.goBack();
@@ -51,4 +47,16 @@ test('Vefify HomePage', async ({ page }) => {
   await test.step('Check list product', async () => {
   await home.assertProductListCount(6);
   });
+
+  await test.step('Add to Cart', async () => {
+    await home.clickAddToCartbutton();
+    await home.assertCartbuttonVisible();
+  });
+
+  await test.step('Remove to Cart', async () => {
+    await home.clickRemoveToCardbutton();
+    await home.assertCartbuttonInvisible();
+  });
+
+
 })

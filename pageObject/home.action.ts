@@ -5,8 +5,9 @@ import { LoginPageUI } from '../interfaces/LoginPageUI';
 
 export class HomeActions {
   constructor(private page: Page) {
-    this.page = page;
+    //this.page = page;
   }
+
 
   getHomepageUrl() {
     return getBaseUrl() + "inventory.html";
@@ -65,11 +66,31 @@ export class HomeActions {
     await expect(this.page.locator(HomePageUI.shopButton)).toBeVisible();
   }
   async clickShopbutton() {
-    await this.page.click(HomePageUI.shopButton);
+  await this.page.waitForSelector(HomePageUI.shopButton, { state: 'visible', timeout: 5000  });
+  await this.page.click(HomePageUI.shopButton);
   }
   async assertProductListCount(expectedCount: number) {
-  const productItems = this.page.locator(HomePageUI.productItems);
-  await expect(productItems).toHaveCount(expectedCount);
-}
+    const productItems = this.page.locator(HomePageUI.productItems);
+    await expect(productItems).toHaveCount(expectedCount);
+  }
+  async clickAddToCartbutton() {
+    await this.page.click(HomePageUI.addToCartButton);
 
-}
+  }
+  async assertCartbuttonVisible() {
+    await expect(this.page.locator(HomePageUI.badgeIcon)).toBeVisible();
+  }
+  async clickRemoveToCardbutton() {
+    await this.page.click(HomePageUI.removeButton);
+
+  }
+
+  async assertCartbuttonInvisible() {
+      await expect(this.page.locator(HomePageUI.badgeIcon)).toBeHidden();
+    }
+
+    async clickAdd() {
+      await this.page.click(HomePageUI.addToCartButton);
+      await this.page.click(HomePageUI.shopButton);
+    }
+  }
